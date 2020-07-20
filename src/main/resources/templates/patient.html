@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient</title>
+</head>
+<body>
+<h>Add patient</h>
+
+<form action="#" th:action="@{/patient/submit}" th:object="${patient}" method="post">
+    <div>
+        <input type="text" th:field="*{firstName}">
+    </div>
+
+    <div>
+        <input type="text" th:field="*{lastName}">
+    </div>
+
+    <div>
+        <input type="text" th:field="*{anamnez}">
+    </div>
+    <button type="submit" class="btn btn-success">Сохранить</button>
+
+</form>
+
+<a href="/main">Все пациенты</a>
+</body>
+</html>

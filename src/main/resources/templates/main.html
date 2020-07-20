@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Main page Hospital</title>
+</head>
+<body>
+<h1>Hospital</h1>
+<a href="/patient">Добавить пациента</a>
+
+<div th:each="patient : ${patients}">
+    <td th:text="${patient.firstName}">Имя</td>
+    <td th:text="${patient.lastName}">Фамилия</td>
+    <td th:text="${patient.anamnez}">Анамнез</td>
+</div>
+</body>
+</html>
