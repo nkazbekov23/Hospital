@@ -1,17 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 <head>
     <meta charset="UTF-8">
     <title>Main page Hospital</title>
 </head>
 <body>
 <h1>Hospital</h1>
-<a href="/patient">Добавить пациента</a>
+<p>
+    <a href="/patient">Добавить пациента</a>
+</p>
+<!--        таблицы-->
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <!--            колонки-->
+        <th scope="col">#</th>
+        <th scope="col">Имя</th>
+        <th scope="col">Фамилия</th>
+        <th scope="col">Анамнез</th>
+        <th scope="col">Действия</th>
+        <th scope="col">Изменить</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--        таблицы-->
+    <tr th:each="patient : ${patients}">
+        <th scope="row" th:text="${patient.id}">1</th>
+        <td th:text="${patient.firstName}">Мясо</td>
+        <td th:text="${patient.lastName}">Мясо</td>
+        <td th:text="${patient.anamnez}">Мясо</td>
+        <td>
+            <a th:href="@{/delete/patient/} + ${patient.id}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
 
-<div th:each="patient : ${patients}">
-    <td th:text="${patient.firstName}">Имя</td>
-    <td th:text="${patient.lastName}">Фамилия</td>
-    <td th:text="${patient.anamnez}">Анамнез</td>
-</div>
 </body>
 </html>

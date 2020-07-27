@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class PatientController {
 
@@ -17,23 +20,33 @@ public class PatientController {
         this.patientService = patientService;
     }
 
-    @GetMapping("/main")
+    @GetMapping
     public String mainPage(Model model) {
         model.addAttribute("patients", patientService.getAll());
         return "main";
     }
 
-    @RequestMapping(value = "/patient")
-    public String patient(Model model) {
-        model.addAttribute("patient", new Patient());
-        return "patient";
-    }
-
+    //add new patient
     @RequestMapping(value = "/patient/submit", method = RequestMethod.POST)
     public String addPatient(@ModelAttribute Patient patient) {
         patientService.save(patient);
 
         return "redirect:/patient";
+    }
+
+    @GetMapping("/name")
+    public String findByName(@PathVariable("name") String name, Model model) {
+        model.addAttribute("patientss", patientService.findByName(name));
+
+        return "redirect:/patient";
+    }
+
+    //delete
+    @RequestMapping(value = "/delete/patient/{id}")
+    public String delete(@PathVariable("id") Integer id) {
+        patientService.delete(id);
+
+        return "redirect:/";
     }
 
 }

@@ -2,12 +2,10 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Patient</title>
+    <title>Update Patient</title>
 </head>
 <body>
-<h>Add patient</h>
-
-<form action="#" th:action="@{/patient/submit}" th:object="${patient}" method="post">
+<form action="#" th:action="@{/update/{id} (id=${patient.id})}" th:object="${patient}" method="post">
     <div>
         <input type="text" th:field="*{firstName}" placeholder="имя">
     </div>
@@ -22,9 +20,5 @@
     <button type="submit" class="btn btn-success">Сохранить</button>
 
 </form>
-
-<a href="/">Все пациенты</a>
-
-
 </body>
 </html>
